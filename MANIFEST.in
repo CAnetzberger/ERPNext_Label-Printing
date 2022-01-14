@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include label_printing *.css
+recursive-include label_printing *.csv
+recursive-include label_printing *.html
+recursive-include label_printing *.ico
+recursive-include label_printing *.js
+recursive-include label_printing *.json
+recursive-include label_printing *.md
+recursive-include label_printing *.png
+recursive-include label_printing *.py
+recursive-include label_printing *.svg
+recursive-include label_printing *.txt
+recursive-exclude label_printing *.pyc
