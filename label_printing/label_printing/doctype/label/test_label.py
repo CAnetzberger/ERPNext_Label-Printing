@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestLabels(unittest.TestCase):
+class TestLabel(unittest.TestCase):
 	pass
