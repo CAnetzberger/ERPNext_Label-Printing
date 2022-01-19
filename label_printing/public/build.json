@@ -1,0 +1,5 @@
+{
+    "label_printing/js/label_printing.min.js": [
+        "public/js/label_printing_desk.js"
+    ]
+}
