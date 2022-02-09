@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-09 11:54:25.055075",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "label_printer",
+  "label_height",
+  "label_width"
+ ],
+ "fields": [
+  {
+   "fieldname": "label_printer",
+   "fieldtype": "Link",
+   "label": "Label Printer",
+   "options": "Network Printer Settings"
+  },
+  {
+   "description": "in mm",
+   "fieldname": "label_height",
+   "fieldtype": "Int",
+   "label": "Label Height"
+  },
+  {
+   "description": "in mm",
+   "fieldname": "label_width",
+   "fieldtype": "Int",
+   "label": "Label Width"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2022-02-09 11:54:25.055075",
+ "modified_by": "Administrator",
+ "module": "Label Printing",
+ "name": "Label Printer Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
