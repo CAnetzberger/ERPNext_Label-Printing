@@ -24,6 +24,7 @@ def print_label(values):
         doc.customer = values["customer"]
         doc.batch = values["batch"]
         doc.qty = label["item_qty"]
+        doc.information = label["information"]
         newdoc = doc.insert()
 
         print_label_by_server("Label", newdoc.name, label["label_qty"], printer_setting[0],"Label", doc=None, no_letterhead=0, file_path=None)
@@ -69,5 +70,4 @@ def print_label_by_server(doctype, name, qty, printer_setting, print_format=None
 
 @frappe.whitelist()
 def get_associated_stockentry(workorder):
-    return frappe.get_last_doc('Stock Entry', filters = {"work_order": "PRO-01530"})
-     
+    return frappe.get_last_doc('Stock Entry', filters = {"work_order": workorder})

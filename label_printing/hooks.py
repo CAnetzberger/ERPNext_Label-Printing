@@ -178,3 +178,10 @@ user_data_fields = [
 # auth_hooks = [
 # 	"label_printing.auth.validate"
 # ]
+
+jenv = {
+    "methods": [
+        "generateBarcode:label_printing.utils.barcode.generateBarcode",
+        "get_code128_glyphs:label_printing.utils.barcode.generateBarcodeGlyphs"
+    ]
+}

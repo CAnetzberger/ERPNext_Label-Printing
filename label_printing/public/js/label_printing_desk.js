@@ -41,7 +41,7 @@ function setupLabelsDialog(page) {
     title: __("Print Labels"),
     fields: [{
       label: __("Reference Doctype"),
-      options: ['Work Order', 'Item'],
+      options: ['Work Order', 'Item', 'Label'],
       fieldname: 'doctype',
       fieldtype: 'Select',
       default: fields.doctype,
@@ -120,6 +120,12 @@ function setupLabelsDialog(page) {
         fieldname: 'label_qty',
         in_list_view: 1,
         fieldtype: 'Int'
+      },
+      {
+        fieldtype: 'Data',
+        fieldname: "information",
+        in_list_view: 1,
+        label: __('Information')
       },
       ]
     },
@@ -203,7 +209,6 @@ function setupLabelsDialog(page) {
           }
         }
       }
-
       d.set_values(fields)
     }
   }
