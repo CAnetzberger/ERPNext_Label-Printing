@@ -23,7 +23,8 @@ function setupLabelsDialog(page) {
     total_amount: 0,
     labels: [{
       item_qty: 0,
-      label_qty: 0,
+      label_qty: 1,
+      information: ''
     }]
   };
 
