@@ -18,13 +18,20 @@ def print_label(values):
 
     for label in values["labels"]:
         doc = frappe.new_doc('Label')
-        doc.item_code = values["item_code"]
-        doc.item_name = values["item_name"]
-        doc.delivery_date = values["delivery_date"]
-        doc.customer = values["customer"]
-        doc.batch = values["batch"]
-        doc.qty = label["item_qty"]
-        doc.information = label["information"]
+        if "item_code" in values:
+            doc.item_code = values["item_code"]
+        if "item_name" in values:
+            doc.item_name = values["item_name"]
+        if "delivery_date" in values:
+            doc.delivery_date = values["delivery_date"]
+        if "customer" in values:
+            doc.customer = values["customer"]
+        if "batch" in values:
+            doc.batch = values["batch"]
+        if "qty" in label:
+            doc.qty = label["item_qty"]
+        if "information" in label:
+            doc.information = label["information"]
         newdoc = doc.insert()
 
         print_label_by_server("Label", newdoc.name, label["label_qty"], printer_setting[0],"Label", doc=None, no_letterhead=0, file_path=None)

@@ -12,19 +12,9 @@ function setupLabelsDialog(page) {
   let cur_frm = page.view.cur_frm
 
   let fields = {
-    doctype: '',
-    docname: '',
-    item_code: '',
-    item_name: '',
-    delivery_date: '',
-    customer: '',
-    batch: '',
-    information: '',
-    total_amount: 0,
     labels: [{
       item_qty: 0,
-      label_qty: 1,
-      information: ''
+      label_qty: 1
     }]
   };
 
@@ -133,12 +123,10 @@ function setupLabelsDialog(page) {
     ],
     primary_action_label: 'Print',
     primary_action(values) {
-      fields = values
-
       frappe.call({
         method: "label_printing.api.print_label",
         args: {
-          values: fields
+          values: values
         },
         callback: function (r) {
           if (r.message === 200) {
@@ -146,7 +134,6 @@ function setupLabelsDialog(page) {
           }
         },
       });
-
       d.hide();
     }
   });
