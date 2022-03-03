@@ -41,9 +41,10 @@ def print_label(values):
 
 def print_label_by_server(doctype, name, qty, printer_setting, print_format=None, doc=None, no_letterhead=0, file_path=None):
     pdf_options = {
-        'page-height': frappe.db.get_single_value('Label Printer Settings', 'label_height'),
-        'page-width': frappe.db.get_single_value('Label Printer Settings', 'label_width'),
+        'page-width': '{0}mm'.format(frappe.db.get_single_value('Label Printer Settings', 'label_width')), 
+        'page-height': '{0}mm'.format(frappe.db.get_single_value('Label Printer Settings', 'label_height')), 
     }
+    
     print_settings = frappe.get_doc("Network Printer Settings", printer_setting)
     try:
         import cups
@@ -56,8 +57,6 @@ def print_label_by_server(doctype, name, qty, printer_setting, print_format=None
         conn = cups.Connection()
         output = PdfFileWriter()
         output = frappe.get_print(doctype, name, print_format, doc=doc, no_letterhead=no_letterhead, as_pdf = True, output = output, pdf_options=pdf_options)
-        print("Here")
-        print(output)
         if not file_path:
             file_path = os.path.join("/", "tmp", "frappe-pdf-{0}.pdf".format(frappe.generate_hash()))
         output.write(open(file_path,"wb"))
