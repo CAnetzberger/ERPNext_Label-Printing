@@ -1,13 +1,32 @@
 import frappe
-from io import BytesIO
-from barcode import EAN13
-from barcode.writer import ImageWriter
+
 
 @frappe.whitelist()
 def generateBarcode(string):
-    rv = BytesIO()
-    EAN13(str(100000902922), writer=ImageWriter()).write(rv)
-    print(rv.decode('UTF-8'))
+
+    from barcode import Code128
+    from barcode.writer import ImageWriter
+    from io import BytesIO
+    import base64
+
+    file_like_object = BytesIO()
+    writer = ImageWriter()
+    value = f'{string}'
+    options = {
+        "module_width": 0.1,
+        "module_height": 1,
+        "quiet_zone": 0,
+        "write_text": False,
+        "text_distance": 1,
+    }
+
+    Code128(value, writer=writer).write(
+        file_like_object, options)
+
+    encoded = base64.b64encode(file_like_object.getvalue()).decode("ascii")
+
+    return f'<img src="data:image/png;base64,{encoded}"  />'
+
 
 lookup = {
     " ": 0,
