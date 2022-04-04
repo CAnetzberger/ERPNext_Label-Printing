@@ -36,11 +36,11 @@ def print_label(values):
             doc.qty = label["item_qty"]
         if "information" in label:
             doc.information = label["information"]
+
         newdoc = doc.insert()
 
-    # TODO comment in
-        # print_label_by_server(
-        #     "Label", newdoc.name, label["label_qty"], printer_setting[0], print_format, doc=None, no_letterhead=0, file_path=None)
+        print_label_by_server(
+            "Label", newdoc.name, label["label_qty"], printer_setting[0], print_format, doc=None, no_letterhead=0, file_path=None)
 
     return 200
 
