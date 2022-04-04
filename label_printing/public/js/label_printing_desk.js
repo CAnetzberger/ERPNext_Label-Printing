@@ -179,7 +179,6 @@ function setupLabelsDialog(page) {
         }
 
         fields.total_amount = doc.qty
-        fields.labels[0].qty_per_label = doc.qty
         d.fields_dict.labels.refresh();
 
       } else if (fields.doctype === "Item") {

@@ -8,7 +8,8 @@
  "field_order": [
   "label_printer",
   "label_height",
-  "label_width"
+  "label_width",
+  "label_print_format"
  ],
  "fields": [
   {
@@ -28,12 +29,18 @@
    "fieldname": "label_width",
    "fieldtype": "Int",
    "label": "Label Width"
+  },
+  {
+   "fieldname": "label_print_format",
+   "fieldtype": "Link",
+   "label": "Label Print Format",
+   "options": "Print Format"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-02-09 11:54:25.055075",
+ "modified": "2022-04-03 14:50:49.776678",
  "modified_by": "Administrator",
  "module": "Label Printing",
  "name": "Label Printer Settings",
