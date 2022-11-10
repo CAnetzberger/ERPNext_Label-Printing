@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestLabelPrinterSettings(unittest.TestCase):
+class TestLabelPrintingSettings(unittest.TestCase):
 	pass

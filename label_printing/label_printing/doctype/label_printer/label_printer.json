@@ -1,7 +1,7 @@
 {
  "actions": [],
- "allow_rename": 1,
- "creation": "2022-02-09 11:54:25.055075",
+ "autoname": "field:label_printer",
+ "creation": "2022-11-09 10:36:02.195555",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -15,48 +15,47 @@
   {
    "fieldname": "label_printer",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Label Printer",
-   "options": "Network Printer Settings"
+   "options": "Network Printer Settings",
+   "reqd": 1,
+   "unique": 1
   },
   {
-   "description": "in mm",
    "fieldname": "label_height",
    "fieldtype": "Int",
-   "label": "Label Height"
+   "in_list_view": 1,
+   "label": "Label Height",
+   "reqd": 1
   },
   {
-   "description": "in mm",
    "fieldname": "label_width",
    "fieldtype": "Int",
-   "label": "Label Width"
+   "in_list_view": 1,
+   "label": "Label Width",
+   "reqd": 1
   },
   {
    "fieldname": "label_print_format",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Label Print Format",
-   "options": "Print Format"
+   "options": "Print Format",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
- "issingle": 1,
+ "istable": 1,
  "links": [],
- "modified": "2022-04-03 14:50:49.776678",
+ "modified": "2022-11-09 12:27:38.327808",
  "modified_by": "Administrator",
  "module": "Label Printing",
- "name": "Label Printer Settings",
+ "name": "Label Printer",
+ "name_case": "Title Case",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
- "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "print": 1,
-   "read": 1,
-   "role": "System Manager",
-   "share": 1,
-   "write": 1
-  }
- ],
+ "permissions": [],
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": []
 }

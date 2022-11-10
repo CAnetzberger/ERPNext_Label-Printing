@@ -1,4 +1,4 @@
-from . import __version__ as app_version
+from frappe import _
 
 app_name = "label_printing"
 app_title = "Label Printing"
@@ -8,13 +8,14 @@ app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "admin@canetzberger.design"
 app_license = "MIT"
+required_apps = ["erpnext"]
 
 # Includes in <head>
 # ------------------
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/label_printing/css/label_printing.css"
-app_include_js = "/assets/js/label_printing.min.js"
+app_include_js = "label_printing.bundle.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/label_printing/css/label_printing.css"
@@ -148,30 +149,6 @@ app_include_js = "/assets/js/label_printing.min.js"
 # auto_cancel_exempted_doctypes = ["Auto Repeat"]
 
 
-# User Data Protection
-# --------------------
-
-user_data_fields = [
-    {
-        "doctype": "{doctype_1}",
-        "filter_by": "{filter_by}",
-        "redact_fields": ["{field_1}", "{field_2}"],
-        "partial": 1,
-    },
-    {
-        "doctype": "{doctype_2}",
-        "filter_by": "{filter_by}",
-        "partial": 1,
-    },
-    {
-        "doctype": "{doctype_3}",
-        "strict": False,
-    },
-    {
-        "doctype": "{doctype_4}"
-    }
-]
-
 # Authentication and authorization
 # --------------------------------
 
@@ -179,9 +156,9 @@ user_data_fields = [
 # 	"label_printing.auth.validate"
 # ]
 
-jenv = {
+jinja = {
     "methods": [
-        "generateBarcode:label_printing.utils.barcode.generateBarcode",
-        "get_code128_glyphs:label_printing.utils.barcode.generateBarcodeGlyphs"
+        "label_printing.utils.barcode.generateBarcode",
+        "label_printing.utils.barcode.generateBarcodeGlyphs"
     ]
 }

@@ -28,6 +28,8 @@ function setupLabelsDialog(page) {
     }
   }
 
+  let label_printer_names
+
   let d = new frappe.ui.Dialog({
     title: __("Print Labels"),
     fields: [{
@@ -86,6 +88,17 @@ function setupLabelsDialog(page) {
       label: __("Batch"),
       fieldname: 'batch',
       fieldtype: 'Data'
+    },
+    {
+      fieldtype: 'Section Break',
+      label: __('Printer')
+    },
+    {
+      label: __("Printer Select"),
+      options: ['Labeldrucker Werk 1 (Ind. 6)', 'Labeldrucker Werk 2 (Bre. 19)'],
+      fieldname: 'printer_select',
+      fieldtype: 'Select',
+      default: 'Labeldrucker Werk 1(Ind. 6)'
     },
     {
       fieldtype: 'Section Break',
