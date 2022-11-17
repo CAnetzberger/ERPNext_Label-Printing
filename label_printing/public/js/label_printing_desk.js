@@ -98,7 +98,7 @@ function setupLabelsDialog(page) {
       options: ['Labeldrucker Werk 1 (Ind. 6)', 'Labeldrucker Werk 2 (Bre. 19)'],
       fieldname: 'printer_select',
       fieldtype: 'Select',
-      default: 'Labeldrucker Werk 1(Ind. 6)'
+      default: 'Labeldrucker Werk 1 (Ind. 6)'
     },
     {
       fieldtype: 'Section Break',
@@ -147,7 +147,9 @@ function setupLabelsDialog(page) {
           }
         },
       });
+
       d.hide();
+
     }
   });
   handleDataFetch();
