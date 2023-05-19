@@ -28,16 +28,17 @@ function setupLabelsDialog(page) {
     }
   }
 
-  let label_printer_names
-
   let d = new frappe.ui.Dialog({
     title: __("Print Labels"),
     fields: [{
       label: __("Reference Doctype"),
-      options: ['Work Order', 'Item', 'Label'],
+      options: ['Work Order', 'Item', 'Label', 'Stock Entry'],
       fieldname: 'doctype',
       fieldtype: 'Select',
-      default: fields.doctype,
+      default: cur_frm.doc.doctype,
+      onchange() {
+        d.set_df_property('docname', 'options', d.fields_dict.doctype.value);
+      }
     },
     {
       label: __("Get data"),
@@ -53,9 +54,9 @@ function setupLabelsDialog(page) {
     {
       label: __("Reference Docname"),
       fieldname: 'docname',
-      fieldtype: 'Data',
-      options: 'doctype',
-      default: fields.docname,
+      fieldtype: 'Link',
+      options: cur_frm.doc.doctype,
+      default: cur_frm.doc.name
     },
     {
       fieldtype: 'Section Break',
@@ -98,11 +99,19 @@ function setupLabelsDialog(page) {
       options: ['Labeldrucker Werk 1 (Ind. 6)', 'Labeldrucker Werk 2 (Bre. 19)'],
       fieldname: 'printer_select',
       fieldtype: 'Select',
-      default: 'Labeldrucker Werk 1 (Ind. 6)'
+      default: 'Labeldrucker Werk 2 (Bre. 19)'
     },
     {
       fieldtype: 'Section Break',
       label: __('Labels')
+    },
+    {
+      label: __("Add Warehouse Label"),
+      fieldname: 'add_warehouse_label',
+      fieldtype: 'Button',
+      click: () => {
+        addWarehouseLabel()
+      }
     },
     {
       fieldname: "labels",
@@ -130,6 +139,12 @@ function setupLabelsDialog(page) {
         fieldname: "information",
         in_list_view: 1,
         label: __('Information')
+      },
+      {
+        label: __("Is Warehouse Labael"),
+        fieldname: 'is_warehouse_label',
+        in_list_view: 1,
+        fieldtype: 'Check'
       },
       ]
     },
@@ -210,9 +225,45 @@ function setupLabelsDialog(page) {
             fields.customer = doc.associated_company
           }
         }
+      } else if (fields.doctype === "Stock Entry") {
+        let item = get_doc("Item", doc.items.slice(-1)[0].item_code)
+        let workorder = get_doc("Work Order", doc.work_order)
+
+        fields.item_code = item.item_code
+        fields.item_name = item.item_name
+        fields.delivery_date = workorder.expected_delivery_date
+        fields.labels[0].item_qty = workorder.qty
+        fields.labels[0].label_qty = 1
+        fields.batch = doc.items.slice(-1)[0].batch_no
+
+        if (item.associated_company) {
+          let customer = get_doc("Customer", item.associated_company)
+          if (customer.short_name) {
+            fields.customer = customer.short_name
+          } else {
+            fields.customer = item.associated_company
+          }
+        }
+
+        fields.total_amount = doc.qty
+        d.fields_dict.labels.refresh();
+
       }
       d.set_values(fields)
     }
+  }
+
+  function addWarehouseLabel() {
+    fields = d.get_values()
+    let newRow = {
+      item_qty: 0,
+      label_qty: 0,
+      is_warehouse_label: true,
+    }
+    let tempValues = d.get_values()
+    tempValues.labels.push({ item_qty: 0, label_qty: 0, is_warehouse_label: true })
+    console.log(tempValues)
+    d.fields_dict.labels.refresh()
   }
 
 }

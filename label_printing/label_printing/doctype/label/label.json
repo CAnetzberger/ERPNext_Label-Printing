@@ -14,7 +14,8 @@
   "delivery_date",
   "customer",
   "batch",
-  "information"
+  "information",
+  "is_warehouse_label"
  ],
  "fields": [
   {
@@ -60,15 +61,22 @@
    "fieldname": "information",
    "fieldtype": "Data",
    "label": "Information"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_warehouse_label",
+   "fieldtype": "Check",
+   "label": "Is Warehouse Label"
   }
  ],
  "icon": "fa fa-tag",
  "links": [],
- "modified": "2022-02-17 09:25:53.912471",
+ "modified": "2023-05-11 08:17:16.609583",
  "modified_by": "Administrator",
  "module": "Label Printing",
  "name": "Label",
  "name_case": "UPPER CASE",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
@@ -97,5 +105,6 @@
   }
  ],
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": []
 }
